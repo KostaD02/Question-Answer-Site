@@ -76,7 +76,8 @@ main .afterRigth {
 }
 .green,
 .red,
-.grey {
+.grey,
+.white {
   width: 10px;
   height: 10px;
   display: inline-block;
@@ -94,4 +95,15 @@ main .afterRigth {
   color: white;
   font-family: "Roboto", sans-serif;
   font-weight: 100;
+}
+.rules {
+  margin-top: 30px;
+}
+.white {
+  background-color: yellow;
+}
+.afterRigth .rigth p {
+  font-size: 20px;
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
