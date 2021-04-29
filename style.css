@@ -5,6 +5,12 @@ body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
     sans-serif;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 main .start {
   display: inline-block;
@@ -320,8 +326,13 @@ HTML CSSResult Skip Results Iframe EDIT ON .wrapper {
 .marginTopper,
 .headerWork {
   margin-top: 10px;
+  font-size: 18px;
 }
 .goingToppper {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.contact a:hover {
+  border-bottom: 1px solid blueviolet;
+  color: whitesmoke;
 }

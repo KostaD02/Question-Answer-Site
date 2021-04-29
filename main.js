@@ -339,6 +339,7 @@ function next() {
       text: "Can't go forward...",
     });
   } else {
+    document.getElementById(`${currentPage}question`).style.background = "grey";
     displayQuestion(`${1 + currentPage++}`);
   }
 }
