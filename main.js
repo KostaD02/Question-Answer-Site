@@ -65,50 +65,55 @@ let questionList = [
 ];
 
 function fillQuestionArrayFromObject(inputArray) {
-  let tempArray = [];
-  let tempQuestion = "";
-  let tempAnswerOne = "";
-  let tempAnswerTwo = "";
+  let tempArray = []; //creating temporary array
+  let tempQuestion = ""; //creating temporary question string
+  let tempAnswerOne = ""; //creating temporary answerone string
+  let tempAnswerTwo = ""; //creating temporary asnwertwo string
   inputArray.forEach((element) => {
     if (element.Question == undefined) tempArray.push("");
+    //checking question line if didnt catch pushing as empty string
     else {
       tempQuestion = element.Question;
-      tempArray.push(tempQuestion);
+      tempArray.push(tempQuestion); //pushing question
     }
     if (element.AnswerOne == undefined) tempArray.push("");
+    //checking question line if didnt catch pushing as empty string
     else {
       tempAnswerOne = element.AnswerOne;
-      tempArray.push(tempAnswerOne);
+      tempArray.push(tempAnswerOne); //pushing answerone
     }
     if (element.AnswerTwo == undefined) tempArray.push("");
+    //checking question line if didnt catch pushing as empty string
     else {
       tempAnswerTwo = element.AnswerTwo;
-      tempArray.push(tempAnswerTwo);
+      tempArray.push(tempAnswerTwo); //pushing answertwo
     }
   });
-  return tempArray;
+  return tempArray; //returning pushed array
 }
 
 function fillSingle(Question, AnswerOne, AnswerTwo) {
-  let tempArray = [];
-  const myQuestion = new Questions(Question, AnswerOne, AnswerTwo);
+  let tempArray = []; //creating temporary array
+  const myQuestion = new Questions(Question, AnswerOne, AnswerTwo); //giving params to class
   tempArray.push(
+    //pushing in temporary array question&answerone&answertwo which was filtered in class constructor&functions
     myQuestion.showParams(1),
     myQuestion.showParams(2),
     myQuestion.showParams(3)
   );
-  return tempArray;
+  return tempArray; //returning pushed array
 }
 
 function filteredArrayFromClass(inputArray) {
-  let tempArray = [];
+  let tempArray = []; //creating temporary array
   for (let i = 0; i < inputArray.length; ) {
+    //using loop to push every question&answerone&answertwo
     tempArray.push(
       fillSingle(inputArray[i], inputArray[i + 1], inputArray[i + 2])
     );
-    i += 3;
+    i += 3; //i must be increased 3 becouse index(question) = 0 , index(answerone) = 1 and  index(answertwo) = 2 so this is going like that ...
   }
-  return tempArray;
+  return tempArray; //returning pushed array
 }
 
 function optionFirst() {
