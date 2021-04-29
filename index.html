@@ -61,10 +61,45 @@
             <div class="left">
                 <p id="outputQuestion">Question 1</p>
                 <div class="chooseAnswer">
-                    <p id="outputAnswerOne">AnswerOne 1</p>
-                    <p id="outputAnswerTwo">AnswerTwo 1</p>
+                    <div class="container">
+                        <div class="squareBorder" id="firstSquare" onclick="buttonClicked('1','firstSquare')"></div>
+                        <span id="outputAnswerOne">AnswerOne</span>
+                    </div>
+                    <div class="container">
+                        <div class="squareBorder" id="secondSquare" onclick="buttonClicked('2','secondSquare')"></div>
+                        <span id="outputAnswerTwo">AnswerTwo</span>
+                    </div>
+                    <br>
                     <div class="buttons">
-
+                        <div class="firstRow">
+                            <div class="leftOne">
+                                <div class="wrapper">
+                                    <p class="back"><span>Back</span></p>
+                                </div>
+                            </div>
+                            <div class="rigthOne">
+                                <div class="wrapper">
+                                    <p class="next"><span>Next</span></p>
+                                </div>
+                            </div>
+                            <div class="middleOne">
+                                <div class="wrapper">
+                                    <p class="sumbit"><span>Sumbit</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="secondRow">
+                            <div class="leftOne">
+                                <div class="wrapper">
+                                    <p class="reload"><span>Reload</span></p>
+                                </div>
+                            </div>
+                            <div class="rigthOne">
+                                <div class="wrapper">
+                                    <p class="finish"><span>Finish</span></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,6 +113,7 @@
                     <div class="white"></div><span> You can choose only one answer</span> <br>
                     <div class="white"></div><span> You must answer all questions <br> before finish</span> <br>
                     <div class="white"></div><span> You can't answer again same question</span> <br>
+                    <div class="white"></div><span> If you skip question marked <br> answer will dissapear</span> <br>
                 </div>
             </div>
         </div>

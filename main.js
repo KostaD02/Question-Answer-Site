@@ -45,7 +45,9 @@ class Questions {
     if (x == 3) return this.answerTwo; //Take AnswerTwo
   }
 }
-
+let firstButtonClicked = 0;
+let secondButtonClicked = 0;
+let clicked = false;
 let questionList = [
   {
     Question: "Question 1",
@@ -143,6 +145,10 @@ function createList(array, ulID) {
   }
 }
 function displayQuestion(questionID = "0", array = []) {
+  if (clicked) {
+    document.getElementById(`firstSquare`).style.background = "transparent";
+    document.getElementById(`secondSquare`).style.background = "transparent";
+  }
   let questionArray = fillQuestionArrayFromObject(questionList);
   let QuestionsArrays = filteredArrayFromClass(questionArray);
   array = QuestionsArrays;
@@ -152,4 +158,23 @@ function displayQuestion(questionID = "0", array = []) {
     array[questionID.charAt(0)][1];
   document.getElementById(`outputAnswerTwo`).innerHTML =
     array[questionID.charAt(0)][2];
+}
+function buttonClicked(clickedButton, buttonID) {
+  if (clickedButton == "1") {
+    firstButtonClicked++;
+    document.getElementById(`${buttonID}`).style.background = "red";
+    if (firstButtonClicked == 2) {
+      document.getElementById(`${buttonID}`).style.background = "transparent";
+      firstButtonClicked = 0;
+    }
+  }
+  if (clickedButton == "2") {
+    secondButtonClicked++;
+    document.getElementById(`${buttonID}`).style.background = "red";
+    if (secondButtonClicked == 2) {
+      document.getElementById(`${buttonID}`).style.background = "transparent";
+      secondButtonClicked = 0;
+    }
+  }
+  if (firstButtonClicked == 1 || secondButtonClicked == 2) clicked = true;
 }

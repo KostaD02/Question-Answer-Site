@@ -28,7 +28,7 @@ main .start .startTwo {
 }
 main .afterLeft {
   display: none;
-  width: 30%;
+  width: 25%;
   margin-top: 100px;
   float: left;
 }
@@ -49,7 +49,7 @@ main .afterLeft ul li:hover {
   transition: 1s;
 }
 main .afterRigth {
-  width: 70%;
+  width: 75%;
   float: right;
   display: none;
   margin-top: 100px;
@@ -106,4 +106,186 @@ main .afterRigth {
   font-size: 20px;
   color: white;
   font-family: "Roboto", sans-serif;
+}
+.chooseAnswer {
+  margin-top: 40px;
+}
+.container {
+  margin-top: 30px;
+}
+.container input {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+.container label {
+  font-size: 20px;
+  margin-left: 10px;
+  color: whitesmoke;
+  font-family: "Roboto", sans-serif;
+}
+.squareBorder {
+  width: 15px;
+  height: 15px;
+  border: 2px solid white;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+HTML CSSResult Skip Results Iframe EDIT ON .wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.reload,
+.next,
+.back,
+.finish,
+.sumbit {
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+}
+
+.next span {
+  position: relative;
+  z-index: 2;
+}
+.reload span {
+  position: relative;
+  z-index: 2;
+}
+.reload:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #ff003b;
+  transition: all 0.35s;
+}
+.next:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: cyan;
+  transition: all 0.35s;
+}
+.next:hover {
+  color: #fff;
+}
+.next:hover:after {
+  width: 100%;
+}
+.reload:hover {
+  color: #fff;
+}
+.reload:hover:after {
+  width: 100%;
+}
+.back span {
+  position: relative;
+  z-index: 2;
+}
+.back:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: grey;
+  transition: all 0.35s;
+}
+.back:hover {
+  color: #fff;
+}
+.back:hover:after {
+  width: 100%;
+}
+.finish span {
+  position: relative;
+  z-index: 2;
+}
+.finish:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: orange;
+  transition: all 0.35s;
+}
+.finish:hover {
+  color: #fff;
+}
+.finish:hover:after {
+  width: 100%;
+}
+.sumbit span {
+  position: relative;
+  z-index: 2;
+}
+.sumbit:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: green;
+  transition: all 0.35s;
+}
+.sumbit:hover {
+  color: #fff;
+}
+.sumbit:hover:after {
+  width: 100%;
+}
+.firstRow {
+  width: 100%;
+  display: inline-block;
+}
+.firstRow .leftOne {
+  width: 33%;
+  display: inline-block;
+}
+.firstRow .middleOne {
+  float: right;
+  width: 33%;
+}
+.firstRow .rigthOne {
+  float: right;
+  width: 33%;
+}
+.secondRow {
+  width: 100%;
+  display: inline-block;
+}
+.secondRow .leftOne {
+  width: 30%;
+  display: inline-block;
+  margin-left: 110px;
+}
+.secondRow .rigthOne {
+  display: inline-block;
+  width: 40%;
+  margin-left: 30px;
 }
