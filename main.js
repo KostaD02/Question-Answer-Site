@@ -246,7 +246,6 @@ function sumbit() {
       text: `Questions left - ${questionsLength - finishedCounter - 1}`,
     });
     finishedCounter++;
-
     document.getElementById(`${pageID}question`).style.background = "green";
     next();
     firstButtonClicked = 0;
@@ -368,6 +367,10 @@ function reload() {
         clicked = false;
         currentPage = "0";
         finishedCounter = 0;
+        for (let i = 0; i < questionsLength; i++) {
+          document.getElementById(`${i}question`).style.background =
+            "transparent";
+        }
         document.getElementById(`firstSquare`).style.background = "transparent";
         document.getElementById(`secondSquare`).style.background =
           "transparent";
