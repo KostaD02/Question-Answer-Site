@@ -60,3 +60,38 @@ main .afterRigth {
   color: white;
   font-size: 25px;
 }
+.afterRigth .left {
+  display: inline-block;
+  width: 70%;
+}
+.afterRigth .rigth {
+  width: 30%;
+  float: right;
+}
+.afterRigth .rigth .header {
+  color: white;
+}
+.afterRigth .rigth .header span {
+  color: whitesmoke;
+}
+.green,
+.red,
+.grey {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+.green {
+  background-color: green;
+}
+.red {
+  background-color: red;
+}
+.grey {
+  background-color: grey;
+}
+.afterRigth .rigth span {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+}
