@@ -162,7 +162,7 @@ function displayQuestion(questionID = "0", array = []) {
 function buttonClicked(clickedButton, buttonID) {
   if (clickedButton == "1") {
     firstButtonClicked++;
-    document.getElementById(`${buttonID}`).style.background = "red";
+    document.getElementById(`${buttonID}`).style.background = "purple";
     if (firstButtonClicked == 2) {
       document.getElementById(`${buttonID}`).style.background = "transparent";
       firstButtonClicked = 0;
@@ -170,7 +170,7 @@ function buttonClicked(clickedButton, buttonID) {
   }
   if (clickedButton == "2") {
     secondButtonClicked++;
-    document.getElementById(`${buttonID}`).style.background = "red";
+    document.getElementById(`${buttonID}`).style.background = "purple";
     if (secondButtonClicked == 2) {
       document.getElementById(`${buttonID}`).style.background = "transparent";
       secondButtonClicked = 0;

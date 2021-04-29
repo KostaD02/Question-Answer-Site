@@ -113,16 +113,8 @@ main .afterRigth {
 .container {
   margin-top: 30px;
 }
-.container input {
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-}
-.container label {
-  font-size: 20px;
-  margin-left: 10px;
+.container span {
   color: whitesmoke;
-  font-family: "Roboto", sans-serif;
 }
 .squareBorder {
   width: 15px;
@@ -151,8 +143,8 @@ HTML CSSResult Skip Results Iframe EDIT ON .wrapper {
   font-size: 18px;
   font-family: sans-serif;
   text-decoration: none;
-  color: #333;
-  border: 2px solid #333;
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
   letter-spacing: 2px;
   text-align: center;
   position: relative;
