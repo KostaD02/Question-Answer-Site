@@ -32,7 +32,7 @@ main .start .startTwo {
 main .afterLeft {
   display: none;
   width: 20%;
-  margin-top: 100px;
+  margin-top: 20px;
   float: left;
 }
 main .afterLeft ul li {
@@ -55,13 +55,14 @@ main .afterRigth {
   width: 80%;
   float: right;
   display: none;
-  margin-top: 100px;
+  margin-top: 20px;
 }
 #outputQuestion {
   text-align: center;
   font-family: "Roboto", sans-serif;
   color: white;
   font-size: 25px;
+  margin-top: 100px;
 }
 .afterRigth .left {
   display: inline-block;
@@ -80,16 +81,36 @@ main .afterRigth {
 .green,
 .red,
 .grey,
-.white {
+.white,
+.black,
+.blue,
+.orange,
+.brown,
+.purple {
   width: 10px;
   height: 10px;
   display: inline-block;
+}
+.orange {
+  background-color: orange;
+}
+.brown {
+  background-color: brown;
+}
+.purple {
+  background-color: purple;
+}
+.blue {
+  background-color: blue;
 }
 .green {
   background-color: green;
 }
 .red {
   background-color: red;
+}
+.black {
+  background-color: black;
 }
 .grey {
   background-color: grey;
@@ -100,7 +121,7 @@ main .afterRigth {
   font-weight: 100;
 }
 .rules {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 .white {
   background-color: yellow;
@@ -133,7 +154,6 @@ HTML CSSResult Skip Results Iframe EDIT ON .wrapper {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .reload,
 .next,
 .back,
@@ -283,4 +303,25 @@ HTML CSSResult Skip Results Iframe EDIT ON .wrapper {
   display: inline-block;
   width: 40%;
   margin-left: 30px;
+}
+.advice {
+  margin-top: 20px;
+}
+.advice button {
+  margin-top: 10px;
+}
+.contact a {
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+}
+.marginTopper,
+.headerWork {
+  margin-top: 10px;
+}
+.goingToppper {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
