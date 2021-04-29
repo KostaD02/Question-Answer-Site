@@ -53,19 +53,61 @@ let finishedCounter = 0;
 let questionsLength = 0;
 let questionList = [
   {
-    Question: "Question 1",
-    AnswerOne: "AnswerOne 1",
-    AnswerTwo: "AnswerTwo 1",
+    Question:
+      "Which of the following correctly describe JavaScript as a langauge?",
+    AnswerOne: "It is based on object creation",
+    AnswerTwo: "It emphasis on SCRIPTING",
   },
   {
-    Question: "Question 2",
-    AnswerOne: "AnswerOne 2",
-    AnswerTwo: "AnswerTwo 2",
+    Question: "Which of the following correctly describe cookies?",
+    AnswerOne: "Often referred to as `persistent HTML`",
+    AnswerTwo: "Small piece of data stored on the user's computer",
   },
   {
-    Question: "Question 3",
-    AnswerOne: "AnswerOne 3",
-    AnswerTwo: "AnswerTwo 3",
+    Question:
+      "You plan the coding of your project.When must the object references be ready?",
+    AnswerOne: "At debug time",
+    AnswerTwo: "At run time",
+  },
+  {
+    Question:
+      "Which of the following languages will you consider as being similar to JavaScript",
+    AnswerOne: "Pascal",
+    AnswerTwo: "C",
+  },
+  {
+    Question:
+      "What are JavaScript relations with the underlying operation platform?",
+    AnswerOne: "Platform binding",
+    AnswerTwo: "Platform independent",
+  },
+  {
+    Question: "A program written by JavaScript is driven by",
+    AnswerOne: "Object",
+    AnswerTwo: "Events",
+  },
+  {
+    Question:
+      "Under which of the following conditions will you need to include semi colons of a line of code?",
+    AnswerOne: "When you have single statement on multiple lines",
+    AnswerTwo: "When you have multiple statements on a line",
+  },
+  {
+    Question:
+      "When you plan for the JavaScript variable names,the first character must be?",
+    AnswerOne: "CamelCase style",
+    AnswerTwo: "Snake style",
+  },
+  {
+    Question: "Which of the following are the valid JavaScript versions?",
+    AnswerOne: "ECMAScript 1-6 supported in all modern browsers",
+    AnswerTwo: "Only ES6",
+  },
+  {
+    Question:
+      "When authoring web page with JavaScript,why should you explicitly include the window object into your codes?",
+    AnswerOne: "This ensures OS compatibility",
+    AnswerTwo: "This is a good practice",
   },
 ];
 
@@ -204,7 +246,9 @@ function sumbit() {
       text: `Questions left - ${questionsLength - finishedCounter - 1}`,
     });
     finishedCounter++;
+
     document.getElementById(`${pageID}question`).style.background = "green";
+    next();
     firstButtonClicked = 0;
     secondButtonClicked = 0;
   }
@@ -216,6 +260,7 @@ function sumbit() {
       text: `Questions left - ${questionsLength - finishedCounter - 1}`,
     });
     finishedCounter++;
+    next();
     document.getElementById(`${pageID}question`).style.background = "green";
     firstButtonClicked = 0;
     secondButtonClicked = 0;
@@ -323,6 +368,9 @@ function reload() {
         clicked = false;
         currentPage = "0";
         finishedCounter = 0;
+        document.getElementById(`firstSquare`).style.background = "transparent";
+        document.getElementById(`secondSquare`).style.background =
+          "transparent";
         displayQuestion(`${0}`);
       } else {
         Swal.fire({
