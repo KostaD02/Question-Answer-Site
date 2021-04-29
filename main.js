@@ -48,6 +48,9 @@ class Questions {
 let firstButtonClicked = 0;
 let secondButtonClicked = 0;
 let clicked = false;
+let currentPage = "0";
+let finishedCounter = 0;
+let questionsLength = 0;
 let questionList = [
   {
     Question: "Question 1",
@@ -115,6 +118,7 @@ function filteredArrayFromClass(inputArray) {
     );
     i += 3; //i must be increased 3 becouse index(question) = 0 , index(answerone) = 1 and  index(answertwo) = 2 so this is going like that ...
   }
+  questionsLength = tempArray.length;
   return tempArray; //returning pushed array
 }
 
@@ -158,6 +162,7 @@ function displayQuestion(questionID = "0", array = []) {
     array[questionID.charAt(0)][1];
   document.getElementById(`outputAnswerTwo`).innerHTML =
     array[questionID.charAt(0)][2];
+  currentPage = questionID.charAt(0);
 }
 function buttonClicked(clickedButton, buttonID) {
   if (clickedButton == "1") {
@@ -176,5 +181,155 @@ function buttonClicked(clickedButton, buttonID) {
       secondButtonClicked = 0;
     }
   }
-  if (firstButtonClicked == 1 || secondButtonClicked == 2) clicked = true;
+  if (firstButtonClicked == 1 || secondButtonClicked == 1) clicked = true;
+}
+function sumbit() {
+  let pageID = currentPage;
+  pageID = pageID.charAt(0);
+  if (firstButtonClicked == 1 && secondButtonClicked == 1) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "You can choose only 1 option",
+    });
+    document.getElementById(`firstSquare`).style.background = "transparent";
+    document.getElementById(`secondSquare`).style.background = "transparent";
+    firstButtonClicked = 0;
+    secondButtonClicked = 0;
+  }
+  if (firstButtonClicked == 1 && secondButtonClicked == 0) {
+    Swal.fire({
+      icon: "success",
+      title: "Correct...",
+      text: `Questions left - ${questionsLength - finishedCounter - 1}`,
+    });
+    finishedCounter++;
+    document.getElementById(`${pageID}question`).style.background = "green";
+    firstButtonClicked = 0;
+    secondButtonClicked = 0;
+  }
+
+  if (firstButtonClicked == 0 && secondButtonClicked == 1) {
+    Swal.fire({
+      icon: "success",
+      title: "Correct...",
+      text: `Questions left - ${questionsLength - finishedCounter - 1}`,
+    });
+    finishedCounter++;
+    document.getElementById(`${pageID}question`).style.background = "green";
+    firstButtonClicked = 0;
+    secondButtonClicked = 0;
+  }
+  if (questionsLength == finishedCounter) {
+    Swal.fire({
+      title: `You answered correctly ${questionsLength} question`,
+      imageUrl:
+        "https://blog.commlabindia.com/wp-content/uploads/2019/07/animated-gifs-corporate-training.gif",
+      imageHeight: 330,
+      imageAlt: "Winner",
+    });
+  }
+}
+function finish() {
+  if (finishedCounter < questionsLength) {
+    Swal.fire({
+      icon: "warning",
+      title: "You must answer all question!",
+      text: `${questionsLength - finishedCounter} questions left ...`,
+    });
+  } else {
+    Swal.mixin({
+      input: "text",
+      confirmButtonText: "Next &rarr;",
+      showCancelButton: true,
+      progressSteps: ["0", "1", "2", "3"],
+    })
+      .queue([
+        {
+          title: "You want more questions ?",
+          text: "lets start | P.S type YES",
+        },
+        {
+          title: "Question 1",
+          text: "What are arrow functions?",
+        },
+        {
+          title: "Question 2",
+          text: "What is Object Destructuring?",
+        },
+        {
+          title: "Question 3",
+          text: "What is a Temporal Dead Zone?",
+        },
+      ])
+      .then((result) => {
+        if (result.value) {
+          Swal.fire({
+            title: "All done!",
+            imageUrl:
+              "https://media0.giphy.com/media/3bzAJKJNjUGT04c2dH/giphy.gif",
+            imageHeight: 480,
+            imageAlt: "Suprise",
+            confirmButtonText: "Lovely!",
+          });
+        }
+      });
+  }
+}
+function back() {
+  if (currentPage == 0) {
+    Swal.fire({
+      icon: "warning",
+      title: "Oops...",
+      text: "Can't go back...",
+    });
+  } else {
+    displayQuestion(`${currentPage - 1}`);
+  }
+}
+function next() {
+  if (currentPage == questionsLength - 1) {
+    Swal.fire({
+      icon: "warning",
+      title: "Oops...",
+      text: "Can't go forward...",
+    });
+  } else {
+    displayQuestion(`${1 + currentPage++}`);
+  }
+}
+function reload() {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success m-2",
+      cancelButton: "btn btn-danger m-2",
+    },
+    buttonsStyling: false,
+  });
+  swalWithBootstrapButtons
+    .fire({
+      title: "Are you sure reload answers?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, reload",
+      cancelButtonText: "No, cancel",
+      reverseButtons: true,
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        firstButtonClicked = 0;
+        secondButtonClicked = 0;
+        clicked = false;
+        currentPage = "0";
+        finishedCounter = 0;
+        displayQuestion(`${0}`);
+      } else {
+        Swal.fire({
+          icon: "info",
+          title: "Almost...",
+          text: "Becarefull next time...",
+        });
+      }
+    });
 }
