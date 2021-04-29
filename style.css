@@ -1,7 +1,7 @@
 body {
   margin: 0px;
   padding: 0px;
-  background: linear-gradient(to right, #00aaff, #00ff6c);
+  background: linear-gradient(to right, #4776e6, #8e54e9);
 }
 main .start {
   display: inline-block;
@@ -12,6 +12,7 @@ main .start {
   font-family: "Playfair Display", serif;
   font-weight: bolder;
   font-size: large;
+  color: white;
 }
 main .start .startOne {
   float: left;
@@ -24,4 +25,38 @@ main .start .startTwo {
   padding-left: 40px;
   width: 50%;
   text-align: center;
+}
+main .afterLeft {
+  display: none;
+  width: 30%;
+  margin-top: 100px;
+  float: left;
+}
+main .afterLeft ul li {
+  list-style: none;
+  margin-bottom: 50px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  font-size: 25px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+main .afterLeft ul li:hover {
+  background-color: violet;
+  border: none;
+  -webkit-transition: all 0.8s ease-in-out;
+  transition: 1s;
+}
+main .afterRigth {
+  width: 70%;
+  float: right;
+  display: none;
+  margin-top: 100px;
+}
+#outputQuestion {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  font-size: 25px;
 }

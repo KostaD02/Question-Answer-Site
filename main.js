@@ -119,9 +119,37 @@ function filteredArrayFromClass(inputArray) {
 function optionFirst() {
   console.log("option 1");
 }
-function optionSecond() {
+function optionSecond(displayID, afterDisplayID, displayPlaceID, ulID) {
   let questionArray = fillQuestionArrayFromObject(questionList);
   let QuestionsArrays = filteredArrayFromClass(questionArray);
-  console.log(questionArray);
-  console.log(QuestionsArrays);
+  document.getElementById(`${displayID}`).style.display = "none";
+  document.getElementById(`${afterDisplayID}`).style.display = "inline-block";
+  document.getElementById(`${displayPlaceID}`).style.display = "inline-block";
+  createList(QuestionsArrays, ulID);
+}
+
+function createList(array, ulID) {
+  let length = array.length;
+  for (let i = 0; i < length; i++) {
+    document.getElementById(`${ulID}`).innerHTML += `<li>Question ${
+      i + 1
+    }</li>`;
+    //document.querySelector("li").id = `question${i}`;
+    let id = `${i}question`;
+    document.querySelector("ul").lastElementChild.id = `${id}`;
+    document
+      .getElementById(`${id}`)
+      .setAttribute("onclick", `displayQuestion('${id}')`);
+  }
+}
+function displayQuestion(questionID = "0", array = []) {
+  let questionArray = fillQuestionArrayFromObject(questionList);
+  let QuestionsArrays = filteredArrayFromClass(questionArray);
+  array = QuestionsArrays;
+  document.getElementById(`outputQuestion`).innerHTML =
+    array[questionID.charAt(0)][0];
+  document.getElementById(`outputAnswerOne`).innerHTML =
+    array[questionID.charAt(0)][1];
+  document.getElementById(`outputAnswerTwo`).innerHTML =
+    array[questionID.charAt(0)][2];
 }

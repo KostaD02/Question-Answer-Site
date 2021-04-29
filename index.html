@@ -30,21 +30,41 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
     <!--Fonts end-->
 </head>
 
 <body>
     <main>
-        <div class="start">
+        <div class="start" id="start">
             <div class="startOne" id="startOne">
                 <p>Fill your questions</p>
-                <button type="button" class="btn btn-primary m-2" onclick="optionFirst()"
+                <button type="button" class="btn btn-primary m-2" onclick="optionFirst(`start`)"
                     id="startVersionOne">Start</button>
             </div>
             <div class="startTwo" id="startTwo">
                 <p>Use template questions</p>
-                <button type="button" class="btn btn-info m-2" onclick="optionSecond()"
+                <button type="button" class="btn btn-info m-2"
+                    onclick="optionSecond(`start`,`afterLeft`,`afterRigth`,`ulList`)"
                     id="startVersionTwo">Start</button>
+            </div>
+        </div>
+        <div class="afterLeft" id="afterLeft">
+            <div class="list">
+                <ul id="ulList">
+                </ul>
+            </div>
+        </div>
+        <div class="afterRigth" id="afterRigth">
+            <p id="outputQuestion">Question 1</p>
+            <div class="chooseAnswer">
+                <p id="outputAnswerOne">AnswerOne 1</p>
+                <p id="outputAnswerTwo">AnswerTwo 1</p>
+                <div class="buttons">
+
+                </div>
             </div>
         </div>
     </main>
