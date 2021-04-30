@@ -1,5 +1,6 @@
 // Credit: Mateusz Rybczonec
-const FULL_DASH_ARRAY = 360;
+// https://css-tricks.com/how-to-create-an-animated-countdown-timer-with-html-css-and-javascript/
+const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
 
