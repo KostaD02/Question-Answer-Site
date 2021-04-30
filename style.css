@@ -167,10 +167,8 @@ HTML CSSResult Skip Results Iframe EDIT ON .wrapper {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.reload,
 .next,
 .back,
-.finish,
 .sumbit {
   display: block;
   width: 200px;
@@ -186,7 +184,22 @@ HTML CSSResult Skip Results Iframe EDIT ON .wrapper {
   position: relative;
   transition: all 0.35s;
 }
-
+.reload,
+.finish {
+  display: block;
+  width: 300px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+}
 .next span {
   position: relative;
   z-index: 2;
@@ -310,12 +323,10 @@ HTML CSSResult Skip Results Iframe EDIT ON .wrapper {
 .secondRow .leftOne {
   width: 30%;
   display: inline-block;
-  margin-left: 110px;
 }
 .secondRow .rigthOne {
-  display: inline-block;
-  width: 40%;
-  margin-left: 30px;
+  width: 47%;
+  float: right;
 }
 .advice {
   margin-top: 20px;
