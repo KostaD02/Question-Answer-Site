@@ -45,13 +45,14 @@ class Questions {
     if (x == 3) return this.answerTwo; //Take AnswerTwo
   }
 }
-let firstButtonClicked = 0;
-let secondButtonClicked = 0;
-let clicked = false;
-let currentPage = "0";
-let finishedCounter = 0;
-let questionsLength = 0;
+let firstButtonClicked = 0; //counting first button click
+let secondButtonClicked = 0; //counting second button click
+let clicked = false; //checking was clicked or not
+let currentPage = "0"; //displaying current page
+let finishedCounter = 0; //counting finished page
+let questionsLength = 0; //taking information about how many question do we have in array
 let questionList = [
+  //question array
   {
     Question:
       "Which of the following correctly describe JavaScript as a langauge?",
@@ -113,6 +114,7 @@ let questionList = [
   //   Question: "",
   //   Answers: ["", "", "", ""],
   //   currentState : 0,
+  //    better version on next build will be like that
   // }
 ];
 
@@ -170,7 +172,9 @@ function filteredArrayFromClass(inputArray) {
 }
 
 function optionFirst() {
+  //showing firstopton
   Swal.fire({
+    //alert
     icon: "error",
     title: "Oops...",
     text: "Something went wrong!",
@@ -178,113 +182,133 @@ function optionFirst() {
   });
 }
 function optionSecond(displayID, afterDisplayID, displayPlaceID, ulID) {
-  let questionArray = fillQuestionArrayFromObject(questionList);
-  let QuestionsArrays = filteredArrayFromClass(questionArray);
-  document.getElementById(`${displayID}`).style.display = "none";
-  document.getElementById(`${afterDisplayID}`).style.display = "inline-block";
-  document.getElementById(`${displayPlaceID}`).style.display = "inline-block";
-  createList(QuestionsArrays, ulID);
+  //this is second option
+  let questionArray = fillQuestionArrayFromObject(questionList); //we are taking firstly elements from object
+  let QuestionsArrays = filteredArrayFromClass(questionArray); //then we are giving to class and it takes constructor and some function which will check validation
+  document.getElementById(`${displayID}`).style.display = "none"; //display none will clear visual of options
+  document.getElementById(`${afterDisplayID}`).style.display = "inline-block"; //after that it will be visible
+  document.getElementById(`${displayPlaceID}`).style.display = "inline-block"; //after that it will be visible
+  createList(QuestionsArrays, ulID); //creating li elements dynamically
 }
 
 function createList(array, ulID) {
-  let length = array.length;
+  //creating li elements dynamically
+  let length = array.length; //first we are making value which will contain question length
   for (let i = 0; i < length; i++) {
+    // then making loop to create as much li element as much we have
     document.getElementById(`${ulID}`).innerHTML += `<li>Question ${
       i + 1
     }</li>`;
     //document.querySelector("li").id = `question${i}`;
-    let id = `${i}question`;
-    document.querySelector("ul").lastElementChild.id = `${id}`;
+    let id = `${i}question`; // then making unique ID
+    document.querySelector("ul").lastElementChild.id = `${id}`; //giving li element unique ID
     document
       .getElementById(`${id}`)
-      .setAttribute("onclick", `displayQuestion('${id}')`);
+      .setAttribute("onclick", `displayQuestion('${id}')`); //giving every li element onclick event and pass function which will display question within unique ID
   }
 }
 function displayQuestion(questionID = "0", array = []) {
+  //displaying question
   if (
+    //checking li element background is green or not , if it's green that's mean it's already sumbit with answer
     document.getElementById(`${currentPage}question`).style.background !=
     "green"
   )
-    document.getElementById(`${currentPage}question`).style.background = "grey";
+    document.getElementById(`${currentPage}question`).style.background = "grey"; //giving grey background color li element if there wasn't already green
   if (clicked) {
-    document.getElementById(`firstSquare`).style.background = "transparent";
-    document.getElementById(`secondSquare`).style.background = "transparent";
+    //if there was clicked we must clear clicks
+    document.getElementById(`firstSquare`).style.background = "transparent"; //making checkbox color transparent
+    document.getElementById(`secondSquare`).style.background = "transparent"; //making checkbox color transparent
   }
-  let questionArray = fillQuestionArrayFromObject(questionList);
-  let QuestionsArrays = filteredArrayFromClass(questionArray);
-  array = QuestionsArrays;
+  let questionArray = fillQuestionArrayFromObject(questionList); //we are taking firstly elements from object
+  let QuestionsArrays = filteredArrayFromClass(questionArray); //then we are giving to class and it takes constructor and some function which will check validation
+  array = QuestionsArrays; //giving optional params value
+  //displaying question&answes on screen which was taken from array , in array firstly must reach index of question number , then reaching every element of that index
   document.getElementById(`outputQuestion`).innerHTML =
     array[questionID.charAt(0)][0];
   document.getElementById(`outputAnswerOne`).innerHTML =
     array[questionID.charAt(0)][1];
   document.getElementById(`outputAnswerTwo`).innerHTML =
     array[questionID.charAt(0)][2];
-
-  currentPage = questionID.charAt(0);
+  currentPage = questionID.charAt(0); //giving current page value , to know after that wich page are we
   document.getElementById("outputQuestionNumber").innerHTML = `Question ${
     parseInt(currentPage) + 1
-  }`;
+  }`; //displaying question number
 }
 function buttonClicked(clickedButton, buttonID) {
+  //this fucntion will take care of button clicks
   if (clickedButton == "1") {
-    firstButtonClicked++;
-    document.getElementById(`${buttonID}`).style.background = "purple";
+    // if your button was clicked
+    firstButtonClicked++; // our counter will increase
+    document.getElementById(`${buttonID}`).style.background = "purple"; //and change color purple
     if (firstButtonClicked == 2) {
-      document.getElementById(`${buttonID}`).style.background = "transparent";
-      firstButtonClicked = 0;
+      //if clicked second time
+      document.getElementById(`${buttonID}`).style.background = "transparent"; //it will change color to transparent
+      firstButtonClicked = 0; //giving back standart value
     }
   }
   if (clickedButton == "2") {
-    secondButtonClicked++;
-    document.getElementById(`${buttonID}`).style.background = "purple";
+    //if your button was clicked
+    secondButtonClicked++; //our counter will increase
+    document.getElementById(`${buttonID}`).style.background = "purple"; //and change color purple
     if (secondButtonClicked == 2) {
-      document.getElementById(`${buttonID}`).style.background = "transparent";
-      secondButtonClicked = 0;
+      //if clicked second time
+      document.getElementById(`${buttonID}`).style.background = "transparent"; //it will change color to transparent
+      secondButtonClicked = 0; //giving back standart value
     }
   }
-  if (firstButtonClicked == 1 || secondButtonClicked == 1) clicked = true;
+  if (firstButtonClicked == 1 || secondButtonClicked == 1) clicked = true; //if one of the option button was clicked , clicked value will set on true
 }
 function sumbit() {
-  let pageID = currentPage;
-  pageID = pageID.charAt(0);
+  //this function will sumbit the answer
+  let pageID = currentPage; //firstly taking current page value
+  pageID = pageID.charAt(0); //from li element id we have string for example "0question" we must take just number , it will be current question id
   if (firstButtonClicked == 1 && secondButtonClicked == 1) {
+    //checking if both checkbox was clicked or not
     Swal.fire({
+      //giving alert of error
       icon: "error",
       title: "Oops...",
       text: "You can choose only 1 option",
     });
-    document.getElementById(`firstSquare`).style.background = "transparent";
-    document.getElementById(`secondSquare`).style.background = "transparent";
-    firstButtonClicked = 0;
-    secondButtonClicked = 0;
+    document.getElementById(`firstSquare`).style.background = "transparent"; //giving back checkbox standart color
+    document.getElementById(`secondSquare`).style.background = "transparent"; //giving back checkbox standart color
+    firstButtonClicked = 0; //giving back counter standart value
+    secondButtonClicked = 0; //giving back counter standart value
   }
   if (firstButtonClicked == 1 && secondButtonClicked == 0) {
+    //if just first checkbox was choosen
     Swal.fire({
+      //giving alert of succsess
       icon: "success",
       title: "Correct...",
       text: `Questions left - ${questionsLength - finishedCounter - 1}`,
     });
-    finishedCounter++;
-    document.getElementById(`${pageID}question`).style.background = "green";
-    next();
-    firstButtonClicked = 0;
-    secondButtonClicked = 0;
+    finishedCounter++; //increase finished question
+    document.getElementById(`${pageID}question`).style.background = "green"; //making li element background green to understand user that question was passed
+    next(); //going to next question
+    firstButtonClicked = 0; //giving back counter standart value
+    secondButtonClicked = 0; //giving back counter standart value
   }
 
   if (firstButtonClicked == 0 && secondButtonClicked == 1) {
+    //if just first checkbox was choosen
     Swal.fire({
+      //giving alert of succsess
       icon: "success",
       title: "Correct...",
       text: `Questions left - ${questionsLength - finishedCounter - 1}`,
     });
-    finishedCounter++;
-    next();
-    document.getElementById(`${pageID}question`).style.background = "green";
-    firstButtonClicked = 0;
-    secondButtonClicked = 0;
+    finishedCounter++; //increase finished question
+    next(); //going to next question
+    document.getElementById(`${pageID}question`).style.background = "green"; //making li element background green to understand user that question was passed
+    firstButtonClicked = 0; //giving back counter standart value
+    secondButtonClicked = 0; //giving back counter standart value
   }
   if (questionsLength == finishedCounter) {
+    //if questions quantity was equal to finished questions thats mean user answered all question
     Swal.fire({
+      //giving alert of finishing
       title: `You answered correctly ${questionsLength} question`,
       imageUrl:
         "https://blog.commlabindia.com/wp-content/uploads/2019/07/animated-gifs-corporate-training.gif",
@@ -294,20 +318,24 @@ function sumbit() {
   }
 }
 function finish() {
+  //this function will check is there any question left , if not it will display little extra questions
   if (finishedCounter < questionsLength) {
     Swal.fire({
+      //giving alert about answering questions
       icon: "warning",
       title: "You must answer all question!",
       text: `${questionsLength - finishedCounter} questions left ...`,
     });
   } else {
     Swal.mixin({
+      //giving alert about extra questions
       input: "text",
       confirmButtonText: "Next &rarr;",
       showCancelButton: true,
-      progressSteps: ["0", "1", "2", "3"],
+      progressSteps: ["0", "1", "2", "3"], //ordering questions
     })
       .queue([
+        //questions array
         {
           title: "You want more questions ?",
           text: "lets start | P.S type YES",
@@ -326,6 +354,7 @@ function finish() {
         },
       ])
       .then((result) => {
+        //after answering all question displaying gif that finished every question
         if (result.value) {
           Swal.fire({
             title: "All done!",
@@ -340,32 +369,40 @@ function finish() {
   }
 }
 function back() {
+  //this function will display before question
   if (currentPage == 0) {
+    //if currentpage is equal 0 that's mean it's first question and can't go more back
     Swal.fire({
+      //giving warning alert
       icon: "warning",
       title: "Oops...",
       text: "Can't go back...",
     });
   } else {
     //document.getElementById(`${currentPage}question`).style.background = "grey";
-    displayQuestion(`${currentPage - 1}`);
+    displayQuestion(`${currentPage - 1}`); //displaying back question
   }
 }
 function next() {
+  //this function will display next question
   if (currentPage == questionsLength - 1) {
+    //checking is this question last in array or not
     Swal.fire({
+      //giving allert becouse it's last question in array and can't go more forward
       icon: "warning",
       title: "Oops...",
       text: "Can't go forward...",
     });
   } else {
     //document.getElementById(`${currentPage}question`).style.background = "grey";
-    displayQuestion(`${1 + currentPage++}`);
+    displayQuestion(`${1 + currentPage++}`); //moving forward
   }
 }
 function reload() {
+  //realoading full page
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
+      //creating two button for user
       confirmButton: "btn btn-success m-2",
       cancelButton: "btn btn-danger m-2",
     },
@@ -373,6 +410,7 @@ function reload() {
   });
   swalWithBootstrapButtons
     .fire({
+      //giving options
       title: "Are you sure reload answers?",
       text: "You won't be able to revert this!",
       icon: "warning",
@@ -382,7 +420,9 @@ function reload() {
       reverseButtons: true,
     })
     .then((result) => {
+      //after option
       if (result.isConfirmed) {
+        //if it's confirmed we are making global value standart
         firstButtonClicked = 0;
         secondButtonClicked = 0;
         clicked = false;
@@ -397,6 +437,7 @@ function reload() {
           "transparent";
         displayQuestion(`${0}`);
       } else {
+        //otherwise we just giving alert
         Swal.fire({
           icon: "info",
           title: "Almost...",
@@ -406,8 +447,10 @@ function reload() {
     });
 }
 function show() {
-  const ipAPI = "//api.ipify.org?format=json";
+  //this function will show user their own IP
+  const ipAPI = "//api.ipify.org?format=json"; //using ip API
   Swal.queue([
+    //giving alert
     {
       title: "Your public IP",
       confirmButtonText: "Show my public IP",
